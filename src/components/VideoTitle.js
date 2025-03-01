@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VideoTitle = ({title,overview}) => {
+const VideoTitle = ({title,overview,id}) => {
   return (
     <div className='md:py-56 md:px-36 py-20 px-6  absolute'>
       <h1 className='md:text-6xl text-xl font-semibold text-white '>{title}</h1>

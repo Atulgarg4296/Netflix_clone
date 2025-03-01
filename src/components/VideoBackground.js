@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { API_OPTIONS } from '../utils/constants'
 
-const VideoBackground = () => {
+const VideoBackground = ({mainMovieId}) => {
   const[youtubeLink,useYouTubeLink] = useState(null);
+  console.log(mainMovieId);
   // API call for fetching youtube key:
   const BackMovies = async ()=>{
-    const mainMovieData = await fetch('https://api.themoviedb.org/3/movie/939243/videos?language=en-US', API_OPTIONS);
+    const mainMovieData = await fetch('https://api.themoviedb.org/3/movie/'+ mainMovieId +'/videos?language=en-US', API_OPTIONS);
     const json = await mainMovieData.json();
     const Trailers = json.results.filter(video=>video.type==="Trailer");
     const mainMovieKey = (Trailers==null)?json.results[0]?.key : Trailers[0]?.key; 
@@ -34,3 +35,5 @@ const VideoBackground = () => {
 export default VideoBackground;
 
 //
+
+// https://api.themoviedb.org/3/movie/939243/videos?language=en-US
